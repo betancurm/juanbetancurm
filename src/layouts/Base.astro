@@ -7,7 +7,6 @@ export interface Props {
     title: string;
 }
 const { title} = Astro.props;
-
 ---
 
 <!doctype html>
@@ -20,18 +19,5 @@ const { title} = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="grid grid-rows-[auto_1fr_auto] min-h-screen">
-		<Header />
-		<main class="w-full h-full">
-			<slot />
-		</main>
-		<Footer />
 	</body>
 </html>
-
-<style>
-	/* Eliminamos height: 100% para evitar conflictos con min-h-screen de Tailwind */
-	html {
-		margin: 0;
-		width: 100%;
-	}
-</style>

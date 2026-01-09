@@ -1,0 +1,67 @@
+---
+import ParticlesBackground from "../components/ParticlesBackground.astro";
+---
+
+<!-- Tu sección Hero -->
+<section
+	class="relative flex flex-col items-center justify-center min-h-screen bg-white overflow-hidden"
+>
+	<!-- 1. Aquí insertamos el componente de partículas -->
+	<div class="absolute inset-0 z-0">
+		<ParticlesBackground />
+	</div>
+
+	<!-- 2. Contenedor del círculo gigante invertido -->
+	<div
+		class="absolute inset-0 top-1/5 z-10 pointer-events-none overflow-hidden"
+	>
+		<!-- CÍRCULO GIGANTE INVERTIDO -->
+		<div
+			class="absolute top-0 left-1/2 -translate-x-1/2 w-[300vw] sm:w-[250vw] md:w-[175vw] min-h-screen aspect-square rounded-full overflow-hidden"
+		>
+			<!-- Capa de gradiente blanco a transparente -->
+			<div
+				class="absolute inset-0 bg-gradient-to-b from-white from-0% via-white via-5% to-transparent to-100%"
+			>
+			</div>
+
+			<!-- Efecto de Luz difusa en el borde superior (Atmósfera) -->
+			<div
+				class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-16 sm:h-20 md:h-24 bg-gray-900/50 blur-3xl rounded-full"
+			>
+			</div>
+		</div>
+	</div>
+
+	<!-- 3. Tu contenido (Texto) -->
+	<div
+		class="relative z-10 text-center px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-0"
+	>
+		<div
+			class="relative z-10 flex flex-col items-center mt-16 sm:mt-20 md:mt-24 lg:mt-32 max-w-4xl mx-auto"
+		>
+			<h1
+				class="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed"
+			>
+				Hi, I'm Juan Betancur
+			</h1>
+
+			<div
+				class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0"
+			>
+				<a
+					href="/work"
+					class="bg-gray-900 hover:bg-gray-700 transition-colors px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold shadow-lg shadow-blue-900/50 text-center text-sm sm:text-base text-white"
+				>
+					Work
+				</a>
+				<a
+					href="#proyects"
+					class="bg-gray-900 hover:bg-gray-700 transition-colors px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold shadow-lg shadow-blue-900/50 text-center text-sm sm:text-base text-white"
+				>
+					Proyects
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

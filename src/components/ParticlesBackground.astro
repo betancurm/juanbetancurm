@@ -1,0 +1,90 @@
+---
+import Particles from "astro-particles";
+// Definimos las opciones aquí en el servidor (frontmatter)
+const options = {
+  background: {
+    color: "transparent", // Para ver tu gradiente o color de fondo del CSS
+  },
+  particles: {
+    number: {
+      value: 60,
+      density: {
+        enable: true,
+        area: 500,
+      },
+    },
+    color: {
+      value: "#181b32", // Color de los puntos
+    },
+    shape: {
+      type: "circle",
+    },
+    opacity: {
+      value: 0.3,
+    },
+    size: {
+      value: 2,
+    },
+    links: {
+      enable: true,
+      distance: 150,
+      color: "#181b32",
+      opacity: 0.2,
+      width: 1,
+    },
+    move: {
+      enable: true,
+      speed: 1,
+    },
+  },
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: "grab", // Efecto red neuronal al pasar el mouse
+      },
+    },
+    modes: {
+      grab: {
+        distance: 140,
+        links: {
+          opacity: 0.5,
+        },
+      },
+    },
+  },
+};
+---
+
+<!-- 
+  El script se ejecuta en el cliente para cargar el motor "slim".
+  Es importante usar type="module" (Astro lo hace por defecto).
+-->
+<script>
+  import { tsParticles } from "tsparticles-engine";
+  import { loadSlim } from "tsparticles-slim";
+
+  // Inicializamos el motor
+  (async () => {
+    await loadSlim(tsParticles);
+  })();
+</script>
+
+<!-- Renderizamos el componente y le pasamos las opciones -->
+<Particles id="tsparticles" options={options} />
+
+<!-- Estilos para asegurar que quede de fondo -->
+<style>
+    /* Usamos :global porque el ID está dentro del componente Particles */
+    :global(#tsparticles) {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0; /* Asegúrate que esté detrás de tu contenido */
+        pointer-events: none; /* Opcional: si quieres que los clics pasen a través, pero quitaría interactividad del mouse */
+    }
+    /* Si usas interactividad 'grab', NO pongas pointer-events: none en el canvas, 
+       sino en los divs que estén por encima si molestan */
+</style>

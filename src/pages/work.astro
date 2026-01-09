@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+const allPosts = await Astro.glob("../content/work/*.md");
+---
+
+<Layout title="Work | Juan Betancur">
+	<div
+		class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 sm:space-y-6 lg:space-y-8"
+	>
+		<div>
+			<h1 class="text-3xl font-bold text-gray-900 mb-6 mt-10 text-left">
+				Work Experience
+			</h1>
+		</div>
+		{
+			allPosts.map((item) => (
+				<Card 
+					dateRange={item.frontmatter.dateRange}
+					company={item.frontmatter.company}
+					position={item.frontmatter.position}
+					description={item.frontmatter.description}
+					achievements={item.frontmatter.achievements}
+				>
+					{" "}
+				</Card>
+			))
+		}
+	</div>
+</Layout>

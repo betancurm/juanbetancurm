@@ -1,0 +1,58 @@
+---
+// Card.astro - Componente reutilizable
+interface Props {
+  dateRange: string;
+  company: string;
+  position: string;
+  description: string;
+  achievements: string[];
+}
+
+const { 
+  dateRange, 
+  company, 
+  position, 
+  description, 
+  achievements
+} = Astro.props;
+---
+
+<article class="border-b border-black/25 mt-4 py-8 first-of-type:mt-0 first-of-type:pt-0 last-of-type:border-none show">
+  <!-- Rango de fechas -->
+  <p class="text-xs text-gray-500 uppercase tracking-wide mb-3">{dateRange}</p>
+  
+  <!-- Nombre de la empresa y posición -->
+  <h3 class="text-lg font-bold text-gray-900 mb-1">{company}</h3>
+  <p class="text-sm font-medium text-gray-700 mb-4">{position}</p>
+  
+  <!-- Descripción -->
+  <p class="text-sm text-gray-600 leading-relaxed mb-4">{description}</p>
+  
+  <!-- Lista de logros -->
+  <ul class="space-y-2">
+    {achievements.map((achievement) => (
+      <li class="flex items-start gap-2 text-sm text-gray-600">
+        <span class="text-gray-400 mt-1">•</span>
+        <span class="leading-relaxed">{achievement}</span>
+      </li>
+    ))}
+  </ul>
+</article>
+
+<!-- 
+EJEMPLO DE USO:
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 sm:space-y-6 lg:space-y-8">
+  {
+    allPosts.map((item) => (
+      <Card
+        dateRange={item.dateRange}
+        company={item.company}
+        position={item.position}
+        description={item.description}
+        achievements={item.achievements}
+      />
+    ))
+  }
+</div>
+-->
