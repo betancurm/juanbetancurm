@@ -10,20 +10,22 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
-    "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.6",
     "astro-particles": "^2.10.0",
     "marked": "^17.0.1",
     "tailwind-merge": "^3.4.0",
-    "tailwindcss": "^4.1.18",
     "three": "^0.167.0",
     "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/typography": "^0.5.19",
     "@types/three": "^0.167.0",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2"
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "3"
   }
 }
