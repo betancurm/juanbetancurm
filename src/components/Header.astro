@@ -5,38 +5,42 @@ import { LINKS } from "../consts";
 
 // Detectar si estamos en la home
 const currentPath = Astro.url.pathname;
-const isHome = currentPath === '/';
+const isHome = currentPath === "/";
 
-const processedLinks = LINKS.map(link => ({
-  ...link,
-  HREF: link.HREF.startsWith('/') ? link.HREF : '/' + link.HREF
+const processedLinks = LINKS.map((link) => ({
+	...link,
+	HREF: link.HREF.startsWith("/") ? link.HREF : "/" + link.HREF,
 }));
 ---
 
-<header id="header" class={`fixed top-0 w-full z-50 transition-all duration-300 ${isHome ? '' : 'bg-white'}`}>
+<header
+	id="header"
+	class={`fixed top-0 w-full z-50 transition-all duration-300 ${isHome ? "" : "bg-white"}`}
+>
 	<Container size="md">
 		<div class="flex h-16 items-center justify-between">
 			<div class="md:flex md:items-center md:gap-12">
 				<a class="block" href="/">
 					<span class="sr-only">Inicio</span>
 					<Logo class="text-[#181b32]" />
-					
 				</a>
 			</div>
 
 			<div class="hidden md:block">
 				<nav aria-label="Global">
 					<ul class="flex items-center gap-6 text-sm">
-						{processedLinks.map(link => (
-							<li>
-								<a
-									class="text-gray-500 transition hover:text-gray-500/75"
-									href={link.HREF}
-								>
-									{link.TEXT}
-								</a>
-							</li>
-						))}
+						{
+							processedLinks.map((link) => (
+								<li>
+									<a
+										class="text-gray-500 transition hover:text-gray-500/75"
+										href={link.HREF}
+									>
+										{link.TEXT}
+									</a>
+								</li>
+							))
+						}
 					</ul>
 				</nav>
 			</div>
@@ -46,6 +50,9 @@ const processedLinks = LINKS.map(link => ({
 					<button
 						id="hamburger-button"
 						class="relative z-50 rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+						aria-label="Abrir menú de navegación"
+						aria-expanded="false"
+						aria-controls="mobile-menu"
 					>
 						<svg
 							id="menu-icon"
@@ -73,8 +80,7 @@ const processedLinks = LINKS.map(link => ({
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								d="M6 18L18 6M6 6l12 12"
-							></path>
+								d="M6 18L18 6M6 6l12 12"></path>
 						</svg>
 					</button>
 				</div>
@@ -87,16 +93,18 @@ const processedLinks = LINKS.map(link => ({
 	>
 		<nav aria-label="Global mobile" class="p-4">
 			<ul class="flex flex-col items-center gap-6 text-2xl">
-				{processedLinks.map(link => (
-					<li>
-						<a
-							class="text-gray-500 transition hover:text-gray-500/75"
-							href={link.HREF}
-						>
-							{link.TEXT}
-						</a>
-					</li>
-				))}
+				{
+					processedLinks.map((link) => (
+						<li>
+							<a
+								class="text-gray-500 transition hover:text-gray-500/75"
+								href={link.HREF}
+							>
+								{link.TEXT}
+							</a>
+						</li>
+					))
+				}
 			</ul>
 		</nav>
 	</div>
@@ -134,7 +142,7 @@ const processedLinks = LINKS.map(link => ({
 
 	// Detectar scroll para agregar línea de separación
 	const header = document.getElementById("header");
-	
+
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > 0) {
 			header?.classList.add("scrolled");
