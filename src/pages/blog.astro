@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopLayout from "src/layouts/TopLayout.astro";
+import { BLOG } from "src/consts";
+import PageTransition from "src/components/PageTransition.astro";
+import BottomLayout from "src/layouts/BottomLayout.astro";
+
+---
+
+<Layout title="Mis Blogs" description="Listado de mis blogs">
+ <PageTransition duration="1s" delay="0.2s">
+	<TopLayout>
+		<div class="animate page-heading">
+			{BLOG.TITLE}
+		</div>
+	</TopLayout>
+  <BottomLayout>
+    <p>Muy pronto...</p>
+
+    </BottomLayout>
+  </PageTransition>
+</Layout>
